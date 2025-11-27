@@ -1,0 +1,25 @@
+[project]
+name = "persona-agent"
+version = "0.1.0"
+description = "PersonaAgent: a configurable, persona-based LLM agent wrapper with memory, skills, and adaptive behavior."
+readme = "README.md"
+authors = [
+    { name = "littledumb", email = "jiamin@gmail.com" }
+]
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = [
+    "litellm>=1.80.7",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.13,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx[socks]>=0.28.1",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "python-dotenv>=1.2.1",
+]
