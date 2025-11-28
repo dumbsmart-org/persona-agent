@@ -1512,7 +1512,6 @@ dev = [
     { name = "pytest", version = "8.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "pytest", version = "9.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "pytest-cov" },
-    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -1523,7 +1522,6 @@ dev = [
     { name = "httpx", extras = ["socks"], specifier = ">=0.28.1" },
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "python-dotenv", specifier = ">=1.2.1" },
 ]
 
 [[package]]
