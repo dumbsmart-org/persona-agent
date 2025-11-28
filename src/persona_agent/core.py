@@ -49,10 +49,10 @@ class PersonaAgent:
       f"Personality: {self.persona.get('personality', 'neutral')}\n"
       f"Style: {self.persona.get('style', 'clear and concise')}\n"
       f"Goals: {', '.join(self.persona.get('goals', []))}\n"
-      f"Domain: {self.persona.get('domain', 'general')}\n"
+      f"Domain: {self.persona.get('domain', 'general')}\n\n"
     )
     guideline = (
-      "Follow your personality and style in all responses. "
+      "Always respond according to the persona described above. "
       "Be explicit when you are uncertain. "
       "Do not claim abilities you do not have.\n"
     )
@@ -63,7 +63,7 @@ class PersonaAgent:
     memory_text = self.memory.as_text(memory_k)
     return (
       f"{system_prompt}\n\n"
-      f"Recent Interactions:\n{memory_text}\n\n"
+      f"Recent conversation:\n{memory_text}\n\n"
       f"User: {user_input}\n\n"
       f"Respond as {self.name}:"
     )
@@ -74,8 +74,8 @@ class PersonaAgent:
     """
     Main entry point: takes user input, builds a persona-aware prompt, calls the model, updates memory, and returns the response.
     """
-    self._remember_user(user_input)
     prompt = self._build_full_prompt(user_input, memory_k)
     response = self.model(prompt, **model_kwargs)
+    self._remember_user(user_input) # Do NOT put this before building the prompt to avoid duplication in prompt
     self._remember_agent(response)
     return response

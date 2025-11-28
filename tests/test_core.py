@@ -1,4 +1,5 @@
-from persona_agent import PersonaAgent, DEFAULT_PROFILE
+from persona_agent.core import PersonaAgent
+from persona_agent.profiles import DEFAULT_PROFILE
 
 def test_persona_agent_basic():
   def mock_model(prompt: str, **kwargs) -> str:

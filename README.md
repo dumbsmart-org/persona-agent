@@ -26,7 +26,8 @@ pip install persona-agent
 ## Quickstart
 
 ```python
-from persona_agent import PersonaAgent, DOCTOR_PROFILE
+from persona_agent.core import PersonaAgent
+from persona_agent.profiles import DOCTOR_PROFILE
 
 # 1. Define how to call your model
 def dummy_model(prompt: str, **kwargs) -> str:
@@ -43,6 +44,34 @@ agent = PersonaAgent(
 # 3. Interact
 response = agent.react("What are common symptoms of generalized myasthenia gravis?")
 print(response)
+```
+
+### Using LiteLLM (recommended for real models)
+
+PersonaAgent works great with [LiteLLM](https://docs.litellm.ai) – a unified client
+for 100+ LLMs (OpenAI, Anthropic, Azure, Ollama, etc.). :contentReference[oaicite:3]{index=3}
+
+```python
+from persona_agent.core import PersonaAgent
+from persona_agent.profiles import DOCTOR_PROFILE
+from persona_agent.models import make_litellm_chat_model
+
+# configure LiteLLM via env vars, e.g.
+# export OPENAI_API_KEY="sk-..."
+
+model = make_litellm_chat_model(
+    model_name="openai/gpt-4o-mini",
+    temperature=0.2,
+    max_tokens=512,
+)
+
+agent = PersonaAgent(
+    name="Dr. Maple",
+    model=model,
+    persona=DOCTOR_PROFILE,
+)
+
+print(agent.act("Explain generalized myasthenia gravis in patient-friendly language."))
 ```
 
 ## Persona definition

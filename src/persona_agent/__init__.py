@@ -2,7 +2,6 @@ from .core import PersonaAgent
 from .memory import Memory, InMemoryMemory, Interaction
 from .skills import SkillRegistry
 from .models import ModelCallable
-from .profiles import DEFAULT_PROFILE, DOCTOR_PROFILE
 
 __all__ = [
   "PersonaAgent",
@@ -11,6 +10,4 @@ __all__ = [
   "Interaction",
   "SkillRegistry",
   "ModelCallable",
-  "DEFAULT_PROFILE",
-  "DOCTOR_PROFILE",
 ]
